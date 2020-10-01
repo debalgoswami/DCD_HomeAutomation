@@ -1,2 +1,7 @@
 # Reading D:/Softwares/ModelSim/modelsim_ase/tcl/vsim/pref.tcl 
 # OpenFile C:/Users/esabh/Documents/GitHub/DCD_HomeAutomation/Project_DCD.v 
+vlog -reportprogress 300 -work work C:/Users/esabh/Documents/GitHub/DCD_HomeAutomation/Project_DCD.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# ** Error: (vlog-19) Failed to access library 'work' at "work".
+# 
+# No such file or directory. (errno = ENOENT)
