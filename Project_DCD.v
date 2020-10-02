@@ -1,5 +1,6 @@
 module dcd_project();
 
+
 //Password checker module
 module password_checker(pass_input, pass_correct, pass_check);
 	input [7:0] pass_input, pass_correct;
@@ -9,6 +10,9 @@ module password_checker(pass_input, pass_correct, pass_check);
 	if(pass_input == pass_correct)
 		pass_check = !pass_check;
 endmodule
+
+
+  
 
 //Comfort System
 module comfort(T_ideal,T_sens,T_set,L_ideal,L_sens,L_set,pass_check);
@@ -30,6 +34,4 @@ module comfort(T_ideal,T_sens,T_set,L_ideal,L_sens,L_set,pass_check);
 				#L_del L_set = L_set + 1
 			end
 	endmodule
-     
-
      
