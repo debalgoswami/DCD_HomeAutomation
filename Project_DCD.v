@@ -30,14 +30,23 @@ module door(flag,clock, reset,door,door_state,dooralarm);
    always @(posedge clock)
    window_state <= window ? 1 : 0;
  endmodule
+ 
+module parity_checker(window_check,fire_check,door_check,parity_output);
+  input window_check,fire_check,door_check;
+ output parity_output;
+  wire w;
+  xor(w,window_check,fire_check);
+  xor(parity_output, w, door_check);
+endmodule
 
-module security(flag,clock, reset, door,window,fire,window_state, windowalarm, door_state, dooralarm,fire_state, firealarm);
+module security(flag,clock, reset, door,window,fire,window_state, windowalarm, door_state, dooralarm,fire_state, firealarm, parity_try);
   input  clock, reset,flag,door,fire, window;
   output [2:0] window_state,door_state,fire_state;
-  output  dooralarm,firealarm,windowalarm; 
+  output  dooralarm,firealarm,windowalarm,parity_try; 
   wire windowalarm,dooralarm,firealarm; 
   
   fire f0(.flag(flag),.clock(clock),.reset(reset),.fire(fire),.fire_state(fire_state),.firealarm(firealarm));
   door f1(.flag(flag),.clock(clock),.reset(reset),.door(door),.door_state(door_state),.dooralarm(dooralarm));
   window f2(.flag(flag),.clock(clock),.reset(reset),.window(window),.window_state(window_state),.windowalarm(windowalarm));
+  parity_checker f3(window_alarm,fire_alarm,door_alarm,parity_try);
 endmodule
